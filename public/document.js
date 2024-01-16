@@ -1,11 +1,24 @@
+import { emitTextEditor, selectDocument } from "./socket-front-document.js";
+
+const parameters = new URLSearchParams(window.location.search);
+const documentName = parameters.get("nome");
+
+const documentTitle = document.getElementById("titulo-documento");
 const textEditor = document.getElementById("editor-texto");
 
-const socket = io();
+documentTitle.textContent = documentName || "Documento sem título";
+
+selectDocument(documentName);
 
 textEditor.addEventListener("keyup", () => {
-  socket.emit("text_editor", textEditor.value);
+  emitTextEditor({
+    text: textEditor.value,
+    documentName,
+  });
 });
 
-socket.on("text_editor_client", (msg) => {
-  textEditor.value = msg;
-});
+function updateTextEditor(text) {
+  textEditor.value = text;
+}
+
+export { updateTextEditor };
