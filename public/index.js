@@ -19,12 +19,20 @@ function insertDocumentLink(documentName) {
   documentsList.innerHTML += `
     <a 
         href="documento.html?nome=${documentName}" 
-        class="list-group-item list-group-item-action">
+        class="list-group-item list-group-item-action"
+        id="documento-${documentName}"
+        >
         ${documentName}
     </a>
     `;
 }
 
+function removeDocumentLink(documentName) {
+  const doc = document.getElementById(`documento-${documentName}`);
+
+  documentsList.removeChild(doc);
+}
+
 // insertDocumentLink("JavaScript");
 
-export { insertDocumentLink };
+export { insertDocumentLink, removeDocumentLink };

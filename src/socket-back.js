@@ -5,6 +5,7 @@ import {
   updateDocument,
   getDocuments,
   addDocument,
+  deleteDocument,
 } from "./documentsDb.js";
 
 io.on("connection", (socket) => {
@@ -14,10 +15,16 @@ io.on("connection", (socket) => {
   });
 
   socket.on("add_document", async (documentName) => {
-    const result = await addDocument(documentName);
+    const isDocumentDuplicate = (await findDocument(documentName)) !== null;
 
-    if (result.acknowledged) {
-      io.emit("add_document_interface", documentName);
+    if (isDocumentDuplicate) {
+      socket.emit("document_duplicate", documentName);
+    } else {
+      const result = await addDocument(documentName);
+
+      if (result.acknowledged) {
+        io.emit("add_document_interface", documentName);
+      }
     }
   });
 
@@ -41,6 +48,15 @@ io.on("connection", (socket) => {
     }
   });
 
+  socket.on("delete_document", async (documentName) => {
+    const result = await deleteDocument(documentName);
+
+    if (result.deletedCount) {
+      io.emit("delete_document_success", documentName);
+    }
+  });
+
+  //Emit message when disconnected
   socket.on("disconnect", (reason) => {
     console.log(`Client ${socket.id} has been disconnected, reason: ${reason}`);
   });
