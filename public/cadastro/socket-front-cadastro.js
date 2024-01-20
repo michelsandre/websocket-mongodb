@@ -8,8 +8,12 @@ socket.on("register_success", () => {
   alert("Cadastro realizado com sucesso!");
 });
 
-socket.on("register_error", () => {
-  alert("Erro durante o cadastro");
+socket.on("register_error", (error) => {
+  if (error == "duplicate") {
+    alert("Usuário já existe, tente um novo");
+  } else {
+    alert("Erro durante o cadastro");
+  }
 });
 
 export { emitRegisterUser };

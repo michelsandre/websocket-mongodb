@@ -1,6 +1,6 @@
-import { emitRegisterUser } from "./socket-front-cadastro.js";
+import { emitAuthenticateUser } from "./socket-front-login.js";
 
-const form = document.getElementById("form-cadastro");
+const form = document.getElementById("form-login");
 
 form.addEventListener("submit", (e) => {
   e.preventDefault();
@@ -8,9 +8,8 @@ form.addEventListener("submit", (e) => {
   const user = form["input-usuario"].value;
   const password = form["input-senha"].value;
 
-  emitRegisterUser({ user, password });
+  emitAuthenticateUser({ user, password });
 
   // Clear fields
-  form["input-usuario"].value = "";
   form["input-senha"].value = "";
 });
