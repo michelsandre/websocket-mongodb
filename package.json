@@ -6,8 +6,8 @@
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server/socket-back.js",
-    "dev": "nodemon server/socket-back.js"
+    "start": "node ./server/socket-back.js",
+    "dev": "nodemon ./server/socket-back.js"
   },
   "author": "michelsandre",
   "license": "ISC",
