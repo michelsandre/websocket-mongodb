@@ -2,14 +2,14 @@
   "version": 2,
   "builds": [
     {
-      "src": "/server/socket-back.js",
-      "use": "@now/node"
+      "src": "./server/*.js",
+      "use": "@vercel/node"
     }
   ],
   "routes": [
     {
       "src": "/(.*)",
-      "dest": "/server/socket-back.js"
+      "dest": "/"
     }
   ]
 }
