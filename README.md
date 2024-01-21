@@ -89,6 +89,17 @@ $ npm run dev
 # O app vai inicializar em <http://localhost:3000>
 ```
 
+Também necessário criar um arquivo de variável de ambiente`.env`, contendo as variáveis:
+
+```bash
+
+# Connection string do banco de dados
+DB_CONNECTION={connection string}
+
+# Palavra chave para geração do Token
+JWT_SECRET={palavra chave}
+```
+
 ## :memo: Licença
 
 Este projeto está sob licença MIT.
