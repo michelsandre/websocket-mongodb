@@ -1,12 +1,31 @@
-import { alertAndRedirect, updateTextEditor } from "./document.js";
+import { getCookie } from "../utils/cookies.js";
+import {
+  alertAndRedirect,
+  handleAllowUserSuccess,
+  updateInterfaceUsers,
+  updateTextEditor,
+} from "./document.js";
 
-const socket = io();
+const socket = io("/users", {
+  auth: {
+    token: getCookie("tokenJwt"),
+  },
+});
 
-function selectDocument(name) {
-  socket.emit("select_document", name, (text) => {
+socket.on("allowUser_success", handleAllowUserSuccess);
+
+function selectDocument(inputData) {
+  socket.emit("select_document", inputData, (text) => {
     updateTextEditor(text);
   });
 }
+
+socket.on("user_already_in_document", () => {
+  alert("Documento já aberto em outra página");
+  window.location.href = "/";
+});
+
+socket.on("users_on_document", updateInterfaceUsers);
 
 function emitTextEditor(data) {
   socket.emit("text_editor", data);

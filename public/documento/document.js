@@ -11,10 +11,23 @@ const documentName = parameters.get("nome");
 const documentTitle = document.getElementById("titulo-documento");
 const textEditor = document.getElementById("editor-texto");
 const deleteButton = document.getElementById("excluir-documento");
+const usersList = document.getElementById("usuarios-conectados");
 
 documentTitle.textContent = documentName || "Documento sem título";
 
-selectDocument(documentName);
+function handleAllowUserSuccess(payloadToken) {
+  console.log(payloadToken);
+  selectDocument({ documentName, username: payloadToken.username });
+}
+
+function updateInterfaceUsers(usersOnDocument) {
+  usersList.innerHTML = "";
+  usersOnDocument.forEach((user) => {
+    usersList.innerHTML += `
+    <li class="list-group-item">${user}</li>
+    `;
+  });
+}
 
 textEditor.addEventListener("keyup", () => {
   emitTextEditor({
@@ -38,4 +51,9 @@ function alertAndRedirect(doc) {
   }
 }
 
-export { updateTextEditor, alertAndRedirect };
+export {
+  updateTextEditor,
+  alertAndRedirect,
+  handleAllowUserSuccess,
+  updateInterfaceUsers,
+};

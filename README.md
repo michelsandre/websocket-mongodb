@@ -15,20 +15,20 @@
 
   <img alt="Tamanho do repositório" src="https://img.shields.io/github/repo-size/michelsandre/websocket-mongodb?color=56BEB8">
 
-  <img alt="Licença" src="https://img.shields.io/github/license/michelsandre/websocket-mongodb?color=56BEB8">
+  <!-- <img alt="Licença" src="https://img.shields.io/github/license/michelsandre/websocket-mongodb?color=56BEB8"> -->
 
   <!-- <img alt="Github issues" src="https://img.shields.io/github/issues/michelsandre/websocket-mongodb?color=56BEB8" /> -->
 
   <!-- <img alt="Github forks" src="https://img.shields.io/github/forks/michelsandre/websocket-mongodb?color=56BEB8" /> -->
 
-  <!-- <img alt="Github stars" src="https://img.shields.io/github/stars/michelsandre/websocket-mongodb?color=56BEB8" /> -->
+  <img alt="Github stars" src="https://img.shields.io/github/stars/michelsandre/websocket-mongodb?color=56BEB8" />
 </p>
 
 <!-- Status -->
 
-<h4 align="center">
+<!-- <h4 align="center">
 	🚧  Websocket Mongodb 🚀 Em construção...  🚧
-</h4>
+</h4> -->
 
 <hr>
 
@@ -46,13 +46,14 @@
 
 ## :dart: Sobre
 
-Curso da Alura de utilização do Socket.IO e MongoDB em NodeJS além de autenticação utilizando token JWT.
+Curso da Alura de utilização do `Socket.IO` e `MongoDB` em `NodeJS` com autenticação utilizando token `JSON Web Tokens` e criptografia de senha utilizando biblioteca `Crypto` do Node.
 
 ## :sparkles: Funcionalidades
 
-:heavy_check_mark: Funcionalidade 1;\
-:heavy_check_mark: Funcionalidade 2;\
-:heavy_check_mark: Funcionalidade 3;
+:heavy_check_mark: Cadastro e Login de Usuário\
+:heavy_check_mark: Cadastro e exclusão de documentos\
+:heavy_check_mark: Edição simultânea dos documentos\
+:heavy_check_mark: Controle de usuários editando documento
 
 ## :rocket: Tecnologias
 
@@ -60,6 +61,8 @@ As seguintes ferramentas foram usadas na construção do projeto:
 
 - [Node.js](https://nodejs.org/en/)
 - [MongoDB](https://www.mongodb.com//)
+- [Socket.io](https://socket.io/)
+- [JSON Web Tokens](https://jwt.io/)
 
 ## :white_check_mark: Pré requisitos
 
@@ -75,17 +78,20 @@ $ git clone https://github.com/michelsandre/websocket-mongodb
 $ cd websocket-mongodb
 
 # Instale as dependências
-$ yarn
+$ npm install
 
-# Para iniciar o projeto
-$ yarn start
+# Para iniciar o projeto em produção
+$ npm start
+
+# Para iniciar o projeto em desenvolvimento, com a utilização do nodemon
+$ npm run dev
 
 # O app vai inicializar em <http://localhost:3000>
 ```
 
 ## :memo: Licença
 
-Este projeto está sob licença MIT. Veja o arquivo [LICENSE](LICENSE.md) para mais detalhes.
+Este projeto está sob licença MIT.
 
 Feito com :heart: por <a href="https://github.com/michelsandre" target="_blank">Andre Michels</a>
 

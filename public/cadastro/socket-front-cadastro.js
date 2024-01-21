@@ -6,6 +6,7 @@ function emitRegisterUser(data) {
 
 socket.on("register_success", () => {
   alert("Cadastro realizado com sucesso!");
+  window.location.href = "/login";
 });
 
 socket.on("register_error", (error) => {
